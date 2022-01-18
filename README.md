@@ -27,3 +27,40 @@ Version:
 [Homebrew]: https://brew.sh/
 [MSPGCC]: https://sourceforge.net/projects/mspgcc/
 [GNU GCC]: https://gcc.gnu.org/
+
+## Installation on Apple M1
+
+This formula does not work, for the moment, on Homebrew amr64 native installation. However, this formula was tested to work under Rosetta 2. The native Homebrew install location on Apple M1 is in `/opt/homebrew`, while x86_64 Homebrew install location is in `/usr/local`. They both can run side-by-side.
+
+Having both arm64 and x86_64 on the same machine, the call to `brew` command goes to native installation (it is first in the path). The call to x86_64 installation requires its full path:
+
+    $ arch --x86_64 /usr/local/bin/brew install <package>
+
+Native Homebrew Installation:
+
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+x86_64 Homebrew Installation:\
+
+    $ arch --x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+## Troubleshooting
+
+When you encounter error permission to write into directories, like the following:
+
+    Error: An exception occurred within a child process:
+      Errno::EPERM: Operation not permitted @ dir_s_mkdir - /usr/local/lib/msp430
+
+run these on x86_64 Homebrew installation:
+
+    mkdir /usr/local/lib/msp430
+    mkdir /usr/local/lib/msp430/lib  
+    mkdir /usr/local/include/msp430  
+    mkdir /usr/local/include/msp430/include
+
+or run these on native Homebrew installation:
+
+    mkdir /opt/homebrew/lib/msp430
+    mkdir /opt/homebrew/lib/msp430/lib  
+    mkdir /opt/homebrew/include/msp430  
+    mkdir /opt/homebrew/include/msp430/include
