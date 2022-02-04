@@ -30,7 +30,7 @@ Version:
 
 ## Installation on Apple M1
 
-This formula does not work, for the moment, on Homebrew amr64 native installation. However, this formula was tested to work under Rosetta 2. The native Homebrew install location on Apple M1 is in `/opt/homebrew`, while x86_64 Homebrew install location is in `/usr/local`. They both can run side-by-side.
+This formula does not work, for the moment, on Homebrew arm64 native installation. However, this formula was tested to work under Rosetta 2. The native Homebrew install location on Apple M1 is in `/opt/homebrew`, while x86_64 Homebrew install location is in `/usr/local`. They both can run side-by-side.
 
 Having both arm64 and x86_64 on the same machine, the call to `brew` command goes to native installation (it is first in the path). The call to x86_64 installation requires its full path:
 
@@ -40,7 +40,7 @@ Native Homebrew Installation:
 
     $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     
-x86_64 Homebrew Installation:\
+x86_64 Homebrew Installation:
 
     $ arch --x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
